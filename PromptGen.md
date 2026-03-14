@@ -274,60 +274,265 @@ describe('Feature', () => {
 
 ### Файлы для AI агентов
 
-*Создай/обнови файлы контекста для эффективной работы AI:*
+*Создай структуру файлов контекста для эффективной работы AI:*
+
+```
+project/
+├── AGENTS.md                    # Корневой файл: описание проекта и навигация
+└── agent_instructions/          # Директория с инструкциями для агентов
+    ├── 00-common.md             # Общие правила для всех агентов
+    ├── 01-architecture.md       # Архитектурные принципы и паттерны
+    ├── 02-coding-standards.md   # Стандарты кода и конвенции
+    ├── 03-testing.md            # Стратегия тестирования
+    └── 04-security.md           # Security guidelines
+```
+
+### AGENTS.md (корневой файл)
+
+*Краткий файл в корне проекта для всех AI агентов:*
 
 ```markdown
-## AGENTS.md (корневой файл контекста)
-# Описание проекта (1-2 предложения)
-# Технологический стек
-# Структура проекта (дерево с комментариями)
-# Команды для запуска (dev, build, test, lint)
-# Соглашения о коде (именование, стиль, паттерны)
-# Ссылки на дополнительную документацию
+# Project Name
 
-## .cursor/rules/*.md (если используется Cursor)
-# rules/architecture.md — архитектурные принципы
-# rules/testing.md — стратегия тестирования
-# rules/security.md — security guidelines
+## Описание
+[1-2 предложения о проекте]
 
-## CLAUDE.md (для Claude Code)
-# Аналогично AGENTS.md с акцентом на workflow
+## Технологический стек
+- Язык: ___
+- Фреймворк: ___
+- База данных: ___
+
+## Структура проекта
+[Дерево файлов с краткими комментариями]
+
+## Команды
+- `npm run dev` — запуск разработки
+- `npm run build` — сборка
+- `npm run test` — тесты
+- `npm run lint` — линтинг
+
+## Инструкции для AI агентов
+См. [`agent_instructions/`](agent_instructions/)
+```
+
+### agent_instructions/00-common.md (общие правила)
+
+*Базовые принципы для всех задач:*
+
+```markdown
+# Общие правила
+
+## Поведение
+- НЕ фантазируй факты, библиотеки, API
+- Если информации недостаточно — ЗАДАЙ вопросы
+- Выбери простое решение вместо сложного (KISS)
+- НЕ добавляй функциональность «на будущее» (YAGNI)
+
+## Рабочий процесс
+1. Изучи контекст в AGENTS.md
+2. Прочти релевантные инструкции из agent_instructions/
+3. Разбей задачу на этапы
+4. Реализуй и протестируй каждый этап
+5. Запроси подтверждение перед следующим этапом
+```
+
+### agent_instructions/01-architecture.md
+
+```markdown
+# Архитектурные принципы
+
+## Паттерны
+- [Паттерны проекта]
+
+## Структура
+- [Организация кода]
+
+## Доменная модель
+[Основные сущности и взаимосвязи]
+```
+
+### agent_instructions/02-coding-standards.md
+
+```markdown
+# Стандарты кода
+
+## Именование
+- [Конвенции именования]
+
+## Стиль
+- [Отступы, кавычки, форматирование]
+
+## Паттерны
+- [Предпочитаемые паттерны]
+- [Анти-паттерны]
+```
+
+### agent_instructions/03-testing.md
+
+```markdown
+# Тестирование
+
+## Типы тестов
+- Unit: ___
+- Integration: ___
+- E2E: ___
+
+## Запуск
+- `npm run test` — все тесты
+- `npm run test:watch` — watch режим
+
+## Требования
+- Покрытие: ___%
+- [Дополнительные требования]
+```
+
+### agent_instructions/04-security.md
+
+```markdown
+# Безопасность
+
+## Обязательные проверки
+- [ ] Входные данные валидированы
+- [ ] Нет SQL injection
+- [ ] Нет XSS уязвимостей
+- [ ] Авторизация проверена
+
+## Запрещено
+- Хардкод секретов
+- [Другие запреты]
 ```
 
 ### Принципы файлов для агентов
-- ✅ **Краткость** — только существенная информация, без воды
-- ✅ **Структура** — чёткие секции с заголовками
-- ✅ **Конкретика** — команды, пути, примеры кода
-- ✅ **Живой документ** — обновляется при обнаружении систематических ошибок
-- ✅ **Ссылки вместо копирования** — ссылайся на другие файлы, не дублируй
+- ✅ **Модульность** — отдельные файлы для каждой темы
+- ✅ **Нумерация** — префиксы 00-, 01-, 02- для порядка
+- ✅ **Краткость** — только существенная информация
+- ✅ **Ссылки** — ссылайся на файлы, не копируй содержимое
+- ✅ **Живой документ** — обновляй при систематических ошибках
 
 ### Файлы для пользователей
 
 *Создай документацию для разработчиков и заказчиков:*
 
+```
+project/
+├── README.md                    # Основная документация
+├── QUICKSTART.md                # Быстрый старт (< 10 минут)
+├── ROADMAP.md                   # План развития проекта
+└── docs/
+    ├── WORKFLOW.md              # Рабочие процессы и CI/CD
+    ├── CHECKLIST.md             # Чек-листы для релиза/деплоя
+    ├── ARCHITECTURE.md          # Архитектурные решения (ADR)
+    ├── API.md                   # API документация
+    ├── DEPLOYMENT.md            # Инструкции по развёртыванию
+    └── CHANGELOG.md             # Журнал изменений
+```
+
+### README.md (основная документация)
+
 ```markdown
-## README.md (основная документация)
-# Название и описание проекта
-# Возможности (Features)
-# Быстрый старт (< 10 минут)
-# Структура репозитория
-# Переменные окружения
-# Тестирование
-# Деплой
-# Лицензия
+# Project Name
 
-## QUICKSTART.md (для быстрого запуска)
-# Prerequisites (версии, аккаунты)
-# Пошаговая установка (git clone, npm install)
-# Настройка .env
-# Запуск (npm run dev)
-# Проверка (curl примеры)
+## Описание
+[Что делает проект, для кого, ценность]
 
-## docs/ (дополнительная документация)
-# docs/ARCHITECTURE.md — архитектурные решения (ADR)
-# docs/API.md — API документация
-# docs/DEPLOYMENT.md — инструкции по развёртыванию
-# docs/CHANGELOG.md — журнал изменений
+## Возможности
+- [Feature 1]
+- [Feature 2]
+
+## Быстрый старт
+1. `git clone <url>`
+2. `npm install`
+3. `cp .env.example .env`
+4. `npm run dev`
+
+## Структура репозитория
+[Дерево с комментариями]
+
+## Документация
+- [QUICKSTART.md](QUICKSTART.md) — быстрый запуск
+- [ROADMAP.md](ROADMAP.md) — план развития
+- [docs/](docs/) — дополнительная документация
+```
+
+### QUICKSTART.md (быстрый старт)
+
+```markdown
+# Быстрый старт
+
+## Prerequisites
+- Node.js >= 20
+- [Другие зависимости]
+
+## Установка
+1. `git clone <url>`
+2. `npm install`
+3. Настройка `.env` (см. .env.example)
+4. `npm run dev`
+
+## Проверка
+- Открыть http://localhost:3000
+- `curl http://localhost:3000/api/health`
+```
+
+### ROADMAP.md (план развития)
+
+```markdown
+# Roadmap
+
+## Этап 1: MVP (Q1 2026)
+- [ ] Feature 1
+- [ ] Feature 2
+
+## Этап 2: Production (Q2 2026)
+- [ ] Feature 3
+- [ ] Feature 4
+
+## Будущее
+- [ ] Feature 5
+- [ ] Feature 6
+```
+
+### docs/WORKFLOW.md (рабочие процессы)
+
+```markdown
+# Рабочие процессы
+
+## Разработка
+1. Создать ветку `feature/xxx`
+2. Реализовать
+3. Запустить тесты
+4. Создать PR
+
+## CI/CD
+- GitHub Actions: [ссылка]
+- Deploy: автоматически после мержа
+
+## Релиз
+1. Обновить версию в package.json
+2. Обновить CHANGELOG.md
+3. Создать git tag
+```
+
+### docs/CHECKLIST.md (чек-листы)
+
+```markdown
+# Чек-листы
+
+## Пре-коммит
+- [ ] Код отформатирован
+- [ ] Тесты проходят
+- [ ] Линтер чист
+
+## Пре-релиз
+- [ ] Все тесты проходят
+- [ ] CHANGELOG обновлён
+- [ ] Версия обновлена
+- [ ] Документация актуальна
+
+## Деплой
+- [ ] Бэкап БД
+- [ ] Миграции применены
+- [ ] Health check проходит
 ```
 
 ### Принципы файлов для пользователей
@@ -438,10 +643,10 @@ curl http://localhost:3000/api/...
 | Приоритет | Документ | Назначение |
 |-----------|----------|------------|
 | 🔴 | **PRD.md** | Требования продукта, функции, критерии приёмки |
-| 🔴 | **AGENTS.md** | Контекст для AI: стек, команды, конвенции |
+| 🔴 | **AGENTS.md** + `agent_instructions/` | Контекст для AI: стек, команды, конвенции |
 | 🟡 | **ARCHITECTURE.md** | Технические решения, схема БД, API |
 | 🟡 | **TESTING.md** | Стратегия тестирования, CI/CD |
-| 🟢 | **RESEARCH.md** | Анализ конкурентов, риски, аудитория |
+| 🟢 | **ROADMAP.md** | План развития, приоритеты, статус |
 
 > 2 часа документации экономят 20+ часов на исправление AI-кода
 
@@ -504,12 +709,10 @@ graph LR
 - [Equal Experts: Meta-prompting in AI coding](https://www.equalexperts.com/blog/ai/from-madness-to-method-with-ai-coding-part-1-meta-prompting/)
 - [ARTJOKER: AI Prompt Engineering Best Practices 2026](https://artjoker.net/blog/ai-prompt-engineering-best-practices/)
 - [Voiceflow: 5 Proven Strategies to Prevent LLM Hallucinations](https://www.voiceflow.com/blog/prevent-llm-hallucinations)
-- [Learn Prompting: Role Prompting Guide](https://learnprompting.org/docs/advanced/zero_shot/role_prompting)
 - [Anthropic: Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - [Zuci Systems: 7 Guiding Principles for AI Agent Design](https://www.zucisystems.com/blogs/design-ai-agents-principles)
 - [Emergent Mind: Task Decomposition Strategies](https://www.emergentmind.com/topics/task-decomposition-strategies)
 - [Strapi: Extensibility in Software Engineering](https://strapi.io/blog/extensibility-in-software-engineering)
-- [UX Planet: CLAUDE.md Best Practices](https://uxplanet.org/claude-md-best-practices-1ef4f861ce7c)
 - [Vibeworkflow: 5 Documents Every AI Coding Project Needs](https://vibeworkflow.app/blog/ai-coding-documentation)
 - [EclipseSource: Mastering Project Context Files](https://eclipsesource.com/blogs/2025/11/20/mastering-project-context-files-for-ai-coding-agents/)
 - [FreeCodeCamp: How to Structure Your README File](https://www.freecodecamp.org/news/how-to-structure-your-readme-file/)
@@ -517,10 +720,20 @@ graph LR
 
 ---
 
-*Версия: 1.3 | Последнее обновление: Март 2026*
+*Версия: 1.4 | Последнее обновление: Март 2026*
+
+### Изменения в версии 1.4
+- ✅ Убраны привязки к конкретным агентам (Claude, Cursor)
+- ✅ AGENTS.md в корне — единый файл для всех AI агентов
+- ✅ agent_instructions/ — директория с модульными инструкциями
+- ✅ Нумерация файлов: 00-common, 01-architecture, 02-coding...
+- ✅ ROADMAP.md — план развития проекта
+- ✅ docs/WORKFLOW.md — рабочие процессы и CI/CD
+- ✅ docs/CHECKLIST.md — чек-листы пре-коммит/пре-релиз/деплой
+- ✅ Разделение по логическому смыслу, не по инструментам
 
 ### Изменения в версии 1.3
-- ✅ Файлы для AI агентов: AGENTS.md, CLAUDE.md, .cursor/rules/*.md
+- ✅ Файлы для AI агентов: AGENTS.md, agent_instructions/
 - ✅ Файлы для пользователей: README.md, QUICKSTART.md, docs/*
 - ✅ Принципы документации: краткость для агентов, наглядность для людей
 - ✅ 5 основных документов AI-проекта (Minimum Viable Documentation)
@@ -528,10 +741,10 @@ graph LR
 ### Изменения в версии 1.2
 - ✅ Добавлены принципы KISS, YAGNI для простых решений
 - ✅ Декомпозиция на логические небольшие этапы
-- ✅ Расширяемость: точки расширения, модульность, контракты
+- ✅ Расширяемость: точки расширения, модульность, хуки, контракты
 - ✅ Лёгкий деплой: Docker, env vars, health checks, миграции
 - ✅ Пошаговая реализация с демонстрацией пользователю/заказчику
-- ✅ Материалы для стейкхолдеров: метрики, визуализация, обратная связь
+- ✅ Материалы для стейкхолдеров: метрики успеха, визуализация, обратная связь
 - ✅ Обновлены анти-паттерны
 
 ### Изменения в версии 1.1
