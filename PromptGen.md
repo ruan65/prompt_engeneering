@@ -272,6 +272,71 @@ describe('Feature', () => {
 - [ ] Обновлённая документация
 - [ ] Инструкция по запуску
 
+### Файлы для AI агентов
+
+*Создай/обнови файлы контекста для эффективной работы AI:*
+
+```markdown
+## AGENTS.md (корневой файл контекста)
+# Описание проекта (1-2 предложения)
+# Технологический стек
+# Структура проекта (дерево с комментариями)
+# Команды для запуска (dev, build, test, lint)
+# Соглашения о коде (именование, стиль, паттерны)
+# Ссылки на дополнительную документацию
+
+## .cursor/rules/*.md (если используется Cursor)
+# rules/architecture.md — архитектурные принципы
+# rules/testing.md — стратегия тестирования
+# rules/security.md — security guidelines
+
+## CLAUDE.md (для Claude Code)
+# Аналогично AGENTS.md с акцентом на workflow
+```
+
+### Принципы файлов для агентов
+- ✅ **Краткость** — только существенная информация, без воды
+- ✅ **Структура** — чёткие секции с заголовками
+- ✅ **Конкретика** — команды, пути, примеры кода
+- ✅ **Живой документ** — обновляется при обнаружении систематических ошибок
+- ✅ **Ссылки вместо копирования** — ссылайся на другие файлы, не дублируй
+
+### Файлы для пользователей
+
+*Создай документацию для разработчиков и заказчиков:*
+
+```markdown
+## README.md (основная документация)
+# Название и описание проекта
+# Возможности (Features)
+# Быстрый старт (< 10 минут)
+# Структура репозитория
+# Переменные окружения
+# Тестирование
+# Деплой
+# Лицензия
+
+## QUICKSTART.md (для быстрого запуска)
+# Prerequisites (версии, аккаунты)
+# Пошаговая установка (git clone, npm install)
+# Настройка .env
+# Запуск (npm run dev)
+# Проверка (curl примеры)
+
+## docs/ (дополнительная документация)
+# docs/ARCHITECTURE.md — архитектурные решения (ADR)
+# docs/API.md — API документация
+# docs/DEPLOYMENT.md — инструкции по развёртыванию
+# docs/CHANGELOG.md — журнал изменений
+```
+
+### Принципы файлов для пользователей
+- ✅ **Quick Start < 10 минут** — новый пользователь запускает быстро
+- ✅ **Наглядность** — скриншоты, диаграммы, примеры
+- ✅ **Простота** — язык бизнеса, не только технический
+- ✅ **Полнота** — все переменные, команды, зависимости
+- ✅ **Тестируемость** — протестируй инструкцию на чистом окружении
+
 ### Пошаговая реализация с демонстрацией
 
 *После каждого этапа делай паузу для демонстрации:*
@@ -351,18 +416,34 @@ curl http://localhost:3000/api/...
 ### Для новой фичи
 - Акцент на: доменную модель, API spec, тесты
 - Требовать: полную реализацию с миграциями
+- Документация: обновить README, AGENTS.md
 
 ### Для рефакторинга
 - Акцент на: сохранение поведения, покрытие тестами
 - Требовать: diff с объяснением изменений
+- Документация: обновить ARCHITECTURE.md, CHANGELOG.md
 
 ### Для багфикса
 - Акцент на: воспроизведение, root cause analysis
 - Требовать: тест на регрессию
+- Документация: зафиксировать в BUGS.md или CHANGELOG.md
 
 ### Для документации
 - Акцент на: полноту, примеры использования
 - Требовать: структуру, searchability
+- Документация: README, QUICKSTART.md, API docs
+
+### 5 основных документов AI-проекта (Minimum Viable Documentation)
+
+| Приоритет | Документ | Назначение |
+|-----------|----------|------------|
+| 🔴 | **PRD.md** | Требования продукта, функции, критерии приёмки |
+| 🔴 | **AGENTS.md** | Контекст для AI: стек, команды, конвенции |
+| 🟡 | **ARCHITECTURE.md** | Технические решения, схема БД, API |
+| 🟡 | **TESTING.md** | Стратегия тестирования, CI/CD |
+| 🟢 | **RESEARCH.md** | Анализ конкурентов, риски, аудитория |
+
+> 2 часа документации экономят 20+ часов на исправление AI-кода
 
 ---
 
@@ -428,11 +509,21 @@ graph LR
 - [Zuci Systems: 7 Guiding Principles for AI Agent Design](https://www.zucisystems.com/blogs/design-ai-agents-principles)
 - [Emergent Mind: Task Decomposition Strategies](https://www.emergentmind.com/topics/task-decomposition-strategies)
 - [Strapi: Extensibility in Software Engineering](https://strapi.io/blog/extensibility-in-software-engineering)
+- [UX Planet: CLAUDE.md Best Practices](https://uxplanet.org/claude-md-best-practices-1ef4f861ce7c)
+- [Vibeworkflow: 5 Documents Every AI Coding Project Needs](https://vibeworkflow.app/blog/ai-coding-documentation)
+- [EclipseSource: Mastering Project Context Files](https://eclipsesource.com/blogs/2025/11/20/mastering-project-context-files-for-ai-coding-agents/)
+- [FreeCodeCamp: How to Structure Your README File](https://www.freecodecamp.org/news/how-to-structure-your-readme-file/)
 - Фреймворки: C.O.S.T., R.A.G.E., PromptWizard, Chain-of-Thought, KISS, YAGNI
 
 ---
 
-*Версия: 1.2 | Последнее обновление: Март 2026*
+*Версия: 1.3 | Последнее обновление: Март 2026*
+
+### Изменения в версии 1.3
+- ✅ Файлы для AI агентов: AGENTS.md, CLAUDE.md, .cursor/rules/*.md
+- ✅ Файлы для пользователей: README.md, QUICKSTART.md, docs/*
+- ✅ Принципы документации: краткость для агентов, наглядность для людей
+- ✅ 5 основных документов AI-проекта (Minimum Viable Documentation)
 
 ### Изменения в версии 1.2
 - ✅ Добавлены принципы KISS, YAGNI для простых решений
